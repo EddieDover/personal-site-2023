@@ -5,13 +5,16 @@ import { env } from 'process';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 function getAllPostIds() {
-  const fileNames = fs.readdirSync('public/posts/');
-  const data = fileNames.map((fileName) => {
-    return {
-      title: fileName.replace(/\.md$/, ''),
-    };
-  });
-  return data;
+  if (fs.existsSync('public/posts')) {
+    const fileNames = fs.readdirSync('public/posts/');
+    const data = fileNames.map((fileName) => {
+      return {
+        title: fileName.replace(/\.md$/, ''),
+      };
+    });
+    return data;
+  }
+  return [];
 }
 
 async function getPost(id: string) {

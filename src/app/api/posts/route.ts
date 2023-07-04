@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from "fs"
+import { readFileSync, readdirSync, existsSync } from "fs"
 import { NextResponse } from "next/server";
 import { join } from "path"
 import matter from "gray-matter"
@@ -11,6 +11,7 @@ export function GET() {
 function getPosts() {
     // Get all markdown files inside the posts directory
     const postsDirectory = join(process.cwd(), 'public/posts')
+    if (existsSync(postsDirectory)) {
     const filenames = readdirSync(postsDirectory)
     const posts = filenames.map((filename) => {
         const filePath = join(postsDirectory, filename)
@@ -23,4 +24,7 @@ function getPosts() {
         }
     });
     return posts
+    } else {
+        return []
+    }
 }
