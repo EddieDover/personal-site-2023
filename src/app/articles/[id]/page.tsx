@@ -1,7 +1,6 @@
 import { reformatDate } from '@/utils/utils';
 import fs from 'fs';
 import matter from 'gray-matter';
-import { env } from 'process';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 function getAllPostIds() {
@@ -18,11 +17,7 @@ function getAllPostIds() {
 }
 
 async function getPost(id: string) {
-  const URL =
-    env.NODE_ENV === 'production'
-      ? 'https://www.eddiedover.dev'
-      : 'http://localhost:3000' + `/posts/${id}.md`;
-  const res = await fetch(`${URL}`);
+  const res = await fetch(`/posts/${id}.md`);
   const textData = await res.text();
   const post = matter(textData);
   const content = post.content;
