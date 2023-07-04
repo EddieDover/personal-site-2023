@@ -15,6 +15,7 @@ const FooterLink = (props: {
     <a
       rel="noopener noreferrer"
       href={href}
+      target="_blank"
       title={title}
       className="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 dark:bg-violet-400 dark:text-gray-900"
     >
@@ -29,7 +30,7 @@ export const Footer = (props: { resumeData: JsonResume | null }): any => {
     <footer className="bg-gray-800 text-gray-50">
       <div className="container flex flex-col p-4 mx-auto md:p-8 lg:flex-row divide-gray-400">
         <ul className="self-center py-6 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start">
-          <Link href="/blog">Blog</Link>
+          <Link href="/articles">Articles</Link>
           <Link href="/resume">Resume / CV</Link>
         </ul>
         <div className="flex flex-col sm:flex-row self-center pt-6 lg:pt-0">

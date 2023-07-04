@@ -81,6 +81,8 @@ export const Page = (): any => {
           For a full resume, please contact me on
           <a
             href={resumeData?.basics?.profiles?.[0]?.url}
+            target="_blank"
+            rel="noreferrer noopener"
             className="flex flex-row underline"
           >
             <span className="p-1">

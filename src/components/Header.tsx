@@ -8,13 +8,15 @@ import { getProfileIcon } from '@/utils/utils';
 const NavLink = (props: {
   href: string;
   text: React.ReactElement | string;
+  openOutside?: boolean;
 }) => {
-  const { href, text } = props;
+  const { href, text, openOutside = false } = props;
   return (
     <li className="flex">
       <Link
         rel="noopener noreferrer"
         href={href}
+        target={openOutside ? '_blank' : '_self'}
         className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
       >
         {text}
@@ -29,7 +31,7 @@ const Header = (props: { resumeData: JsonResume | null }): any => {
     <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
       <div className="flex flex-col sm:flex-row h-8">
         <ul className="flex flex-col flex-grow space-x-3 md:flex-row">
-          <NavLink href="/blog" text="Blog" />
+          <NavLink href="/articles" text="Articles" />
           <NavLink href="/resume" text="Resume / CV" />
         </ul>
         <Link
@@ -47,6 +49,7 @@ const Header = (props: { resumeData: JsonResume | null }): any => {
                 <NavLink
                   key={profile.network}
                   href={profile.url as string}
+                  openOutside={true}
                   text={getProfileIcon(profile.network as string)}
                 />
               );
