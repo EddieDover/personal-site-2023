@@ -17,7 +17,7 @@ const NavLink = (props: {
         rel="noopener noreferrer"
         href={href}
         target={openOutside ? '_blank' : '_self'}
-        className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+        className="flex mx-auto my-1 sm:m-0 sm:items-center px-4 sm:-mb-1 sm:border-b-2 dark:border-transparent"
       >
         {text}
       </Link>
@@ -29,7 +29,7 @@ const Header = (props: { resumeData: JsonResume | null }): any => {
   const { resumeData } = props;
   return (
     <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
-      <div className="flex flex-col sm:flex-row h-8">
+      <div className="flex flex-col sm:flex-row sm:h-8">
         <ul className="flex flex-col flex-grow space-x-3 md:flex-row">
           <NavLink href="/articles" text="Articles" />
           <NavLink href="/resume" text="Resume / CV" />

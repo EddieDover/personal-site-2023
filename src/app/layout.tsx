@@ -6,6 +6,7 @@ import Providers from '@/utils/provider';
 import Footer from '@/components/Footer';
 import { JsonResume } from '@/types/JsonResume';
 import { useState, useEffect } from 'react';
+import * as Swetrix from 'swetrix';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,13 +32,16 @@ export default function RootLayout({
     });
   }, []);
 
+  Swetrix.init('nFZjg5hS3X1o');
+  Swetrix.trackViews();
+
   return (
     <html lang="en" className="w-full h-full" data-theme="light">
       <body
         className={`w-full h-full bg-base flex flex-col ${inter.className}`}
       >
         <Header resumeData={resumeData} />
-        {children}
+        <div className="flex flex-grow flex-col">{children}</div>
         <Footer resumeData={resumeData} />
       </body>
     </html>

@@ -94,8 +94,8 @@ export const Page = (): any => {
         <h1 className={`text-center mb-2 mt-2 font-bold text-2xl`}>
           Employment History
         </h1>
-        <div className="flex flex-col mx-auto w-fit">
-          <table className="px-1 table-auto">
+        <div className="flex flex-col w-full">
+          <table className="px-1 table-auto w-1/2 mx-auto">
             <caption className="hidden">
               Eddie Dover&apos;s employment history
             </caption>
@@ -107,8 +107,8 @@ export const Page = (): any => {
                 <th scope="col">End Date</th>
               </tr>
             </thead>
-            <tbody>
-              {resumeData?.work?.map((job) => {
+            <tbody className="sm:table-row-group">
+              {resumeData?.work?.map((job, idx) => {
                 return (
                   <tr
                     key={job.name}
@@ -116,6 +116,8 @@ export const Page = (): any => {
                       job.usedSkills?.includes(selectedSkill) === true
                         ? 'border-black'
                         : 'border-transparent'
+                    } ${
+                      idx % 2 ? 'sm:bg-gray-300' : ''
                     } sm:py-2 border-dotted border-2 m-2 sm:text-center flex flex-col sm:table-row`}
                   >
                     <td className="text-center sm:text-left">
