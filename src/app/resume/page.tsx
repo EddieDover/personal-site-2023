@@ -49,7 +49,7 @@ export const Page = () => {
 
   return (
     <div className="h-full w-full">
-      <table id="skills_table" className="px-1 text-xs sm:text-sm">
+      <table id="skills_table" className="px-1 text-xs sm:text-sm mx-auto">
         <caption className="hidden">Eddie Dover&apos;s skills</caption>
         <thead>
           <tr>
