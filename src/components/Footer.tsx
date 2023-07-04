@@ -1,5 +1,5 @@
 'use client';
-import { JsonResume } from '@/types/JsonResume';
+import { useResume } from '@/utils/resume';
 import { getProfileIcon } from '@/utils/utils';
 import Link from 'next/link';
 
@@ -22,8 +22,8 @@ const FooterLink = (props: {
   );
 };
 
-export const Footer = (props: { resumeData: JsonResume | null }) => {
-  const { resumeData } = props;
+export const Footer = () => {
+  const resumeData = useResume();
   return (
     <footer className="bg-gray-800 text-gray-50">
       <div className="container flex flex-col p-4 mx-auto md:p-8 lg:flex-row divide-gray-400">

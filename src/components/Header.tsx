@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { JsonResume } from '@/types/JsonResume';
 import Link from 'next/link';
 import { getProfileIcon } from '@/utils/utils';
+import { useResume } from '@/utils/resume';
+import { useSwetrix } from '@swetrix/nextjs';
 
 const NavLink = (props: {
   href: string;
@@ -24,8 +25,10 @@ const NavLink = (props: {
   );
 };
 
-const Header = (props: { resumeData: JsonResume | null }) => {
-  const { resumeData } = props;
+const Header = () => {
+  const resumeData = useResume();
+  useSwetrix('nFZjg5hS3X1o');
+
   return (
     <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
       <div className="flex flex-col sm:flex-row sm:h-8">
