@@ -1,8 +1,4 @@
 'use client';
-import { useRouter, useSearchParams } from 'next/navigation';
-import matter from 'gray-matter';
-import ReactMarkdown from 'react-markdown';
-import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { reformatDate } from '@/utils/utils';
@@ -13,15 +9,15 @@ interface Post {
   id: string;
 }
 
-const Page = (props: { params: { title: string } }) => {
+const Page = () => {
   const [postIds, setPostIds] = useState<Post[]>([]);
   const [fetching, setFetching] = useState<boolean>(false);
 
   useEffect(() => {
     async function getPostIds() {
       const fileNames = await fetch('api/posts');
-      const data = await fileNames.json();
-      return data as Post[];
+      const data = (await fileNames.json()) as Post[];
+      return data;
     }
     setFetching(true);
     getPostIds()
@@ -42,16 +38,16 @@ const Page = (props: { params: { title: string } }) => {
       ) : null}
       {!fetching && !postIds.length ? (
         <h1 className="text-center text-xl py-5">
-          When I have interesting things to say, this is where they'll go.
+          When I have interesting things to say, this is where they&apos;ll go.
         </h1>
       ) : null}
       {!fetching && postIds.length ? (
         <>
           <h1 className="text-center text-3xl py-5">
-            Various things I've written down
+            Various things I&apos;ve written down
           </h1>
           <ul className="text-center">
-            {postIds.map((post: Post, idx: number) => (
+            {postIds.map((post: Post) => (
               <li className="cursor-pointer" key={post.id}>
                 <p className="text-lg">
                   <Link className="underline" href={`/article/${post.id}`}>{` ${

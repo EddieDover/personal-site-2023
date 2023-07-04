@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { env } from 'process';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
-async function getAllPostIds() {
+function getAllPostIds() {
   const fileNames = fs.readdirSync('public/posts/');
   const data = fileNames.map((fileName) => {
     return {
@@ -15,13 +15,13 @@ async function getAllPostIds() {
 }
 
 async function getPost(id: string) {
-  let URL =
+  const URL =
     env.NODE_ENV === 'production'
       ? 'https://www.eddiedover.dev'
       : 'http://localhost:3000' + `/posts/${id}.md`;
   const res = await fetch(`${URL}`);
   const textData = await res.text();
-  const post = await matter(textData);
+  const post = matter(textData);
   const content = post.content;
   return { ...post.data, id, content };
 }
@@ -47,7 +47,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 }
 
 export const dynamicParams = true;
-export async function generateStaticParams() {
-  const paths = await getAllPostIds();
+export function generateStaticParams() {
+  const paths = getAllPostIds();
   return paths;
 }
