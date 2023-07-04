@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { type JsonResume } from '@/types/JsonResume';
 import { GrLinkedin } from 'react-icons/gr';
 
-export const Page = (): any => {
+export const Page = () => {
   const [resumeData, setResumeData] = useState<JsonResume | null>(null);
 
   useEffect(() => {
@@ -13,9 +13,13 @@ export const Page = (): any => {
       return data;
     }
 
-    getResumeData().then((data) => {
-      setResumeData(data);
-    });
+    getResumeData()
+      .then((data) => {
+        setResumeData(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   const [selectedSkill, setSelectedSkill] = useState<string>('');

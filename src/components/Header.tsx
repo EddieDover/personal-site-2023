@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { JsonResume } from '@/types/JsonResume';
-import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { getProfileIcon } from '@/utils/utils';
 
@@ -25,7 +24,7 @@ const NavLink = (props: {
   );
 };
 
-const Header = (props: { resumeData: JsonResume | null }): any => {
+const Header = (props: { resumeData: JsonResume | null }) => {
   const { resumeData } = props;
   return (
     <header className="p-4 dark:bg-gray-800 dark:text-gray-100">

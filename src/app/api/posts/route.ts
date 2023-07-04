@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 import { join } from "path"
 import matter from "gray-matter"
 
-export async function GET() {
-    const posts = await getPosts()
+export function GET() {
+    const posts = getPosts()
     return NextResponse.json(posts);
 }
 
@@ -18,8 +18,8 @@ function getPosts() {
         const matterdata = matter(fileContents)
         return {
             id: filename.replace('.md', ''),
-            title: matterdata.data.title,
-            date: matterdata.data.date,
+            title: matterdata.data.title as string,
+            date: matterdata.data.date as string,
         }
     });
     return posts

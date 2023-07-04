@@ -1,9 +1,7 @@
 'use client';
 import { JsonResume } from '@/types/JsonResume';
 import { getProfileIcon } from '@/utils/utils';
-import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
-import { GrLinkedin, GrGithub } from 'react-icons/gr';
 
 const FooterLink = (props: {
   href: string;
@@ -24,7 +22,7 @@ const FooterLink = (props: {
   );
 };
 
-export const Footer = (props: { resumeData: JsonResume | null }): any => {
+export const Footer = (props: { resumeData: JsonResume | null }) => {
   const { resumeData } = props;
   return (
     <footer className="bg-gray-800 text-gray-50">

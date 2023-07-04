@@ -2,11 +2,10 @@
 import Header from '@/components/Header';
 import './globals.css';
 import { Inter } from 'next/font/google';
-import Providers from '@/utils/provider';
 import Footer from '@/components/Footer';
 import { JsonResume } from '@/types/JsonResume';
 import { useState, useEffect } from 'react';
-import * as Swetrix from 'swetrix';
+import { useSwetrix } from '@/utils/swetrix';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,19 +20,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [resumeData, setResumeData] = useState<JsonResume | null>(null);
+  useSwetrix('nFZjg5hS3X1o');
   useEffect(() => {
     async function getResumeData() {
       const response = await fetch('/resume.json');
       const data = (await response.json()) as JsonResume;
       return data;
     }
-    getResumeData().then((data) => {
-      setResumeData(data);
-    });
+    getResumeData()
+      .then((data) => {
+        setResumeData(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
-
-  Swetrix.init('nFZjg5hS3X1o');
-  Swetrix.trackViews();
 
   return (
     <html lang="en" className="w-full h-full" data-theme="light">

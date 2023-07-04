@@ -2,7 +2,6 @@
     "plugins": ["@typescript-eslint"],
     "extends": [
       "next/core-web-vitals",
-      "plugin:jest-dom/recommended",
       "plugin:@typescript-eslint/recommended",
       "prettier",
       "plugin:@typescript-eslint/recommended-requiring-type-checking"
@@ -10,14 +9,6 @@
     "rules": {
       "@typescript-eslint/no-unused-vars": "error"
     },
-    "overrides": [
-      {
-        "files": ["cypress/**/*.ts", "cypress.config.ts"],
-        "parserOptions": {
-          "project": "./cypress/tsconfig.json"
-        }
-      }
-    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "project": "./tsconfig.json"
